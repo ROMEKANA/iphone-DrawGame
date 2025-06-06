@@ -4,7 +4,9 @@ import SwiftUI
 struct DrawGameApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+
+            TitleView()
+
         }
     }
 }

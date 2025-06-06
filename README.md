@@ -4,7 +4,7 @@ This repository contains a minimal prototype of a small online drawing game for 
 
 ## Structure
 
-- `server/` - Node.js WebSocket server that manages rooms using a simple room ID system.
+- `server.js` - Node.js WebSocket server that manages rooms using a simple room ID system.
 - `client/` - SwiftUI sample code for the iOS client.
 
 ## Running the Server
@@ -12,13 +12,12 @@ This repository contains a minimal prototype of a small online drawing game for 
 Install dependencies and start the server:
 
 ```bash
-cd server
 npm install
-node server.js
+npm start
 ```
 
 
-The server listens on `ws://localhost:8080` and relays JSON messages between all clients in the same room. You can skip running the server if you use the new peer-to-peer mode in the iOS client.
+The server listens on `ws://localhost:3000` (or the `PORT` environment variable) and relays JSON messages between all clients in the same room. You can skip running the server if you use the new peer-to-peer mode in the iOS client.
 
 ## iOS Client
 

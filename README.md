@@ -17,13 +17,15 @@ npm install
 node server.js
 ```
 
-The server listens on `ws://localhost:8080` and relays JSON messages between all clients in the same room.
+The server listens on `ws://localhost:8080` and relays JSON messages between all clients in the same room. You can skip running the server if you use the new peer-to-peer mode in the iOS client.
 
 ## iOS Client
 
 The SwiftUI code in `client/` shows a simple example of connecting to the server, creating or joining rooms, and drawing on a canvas. You can open the folder in Xcode and build it for iOS.
 
-The client uses `URLSessionWebSocketTask` to communicate with the server. Drawing data is currently sent as a placeholder string and should be extended to send real stroke information.
+The client originally used WebSockets, but a simple peer-to-peer mode is now included using Apple's `MultipeerConnectivity` framework. When a player creates a room they act as the host and advertise the session on the local network. Other players join the room without the Node.js server.
+
+Drawing data is still sent as placeholder strings and should be extended to transmit real stroke information.
 
 ## Development Notes
 

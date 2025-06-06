@@ -29,7 +29,11 @@ struct DrawingView: View {
             .background(Color.white)
         }
         .onAppear {
-            socket.connect(roomId: roomId, playerName: playerName)
+            if isHost {
+                socket.host(roomId: roomId, playerName: playerName)
+            } else {
+                socket.join(roomId: roomId, playerName: playerName)
+            }
         }
         .navigationTitle(roomId)
     }

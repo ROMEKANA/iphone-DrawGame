@@ -26,7 +26,11 @@ struct DrawingView: View {
             }
             .gesture(DragGesture(minimumDistance: 0.1)
                 .onChanged { value in
-                    currentPath.addLine(to: value.location)
+                    if currentPath.isEmpty {
+                        currentPath.move(to: value.location)
+                    } else {
+                        currentPath.addLine(to: value.location)
+                    }
                 }
                 .onEnded { _ in
                     paths.append(currentPath)

@@ -1,5 +1,13 @@
+const express = require('express');
+const path = require('path');
+const http = require('http');
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({ port: 8080 });
+
+const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
+
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
 
 const rooms = {};
 
@@ -128,4 +136,6 @@ function shuffle(arr) {
   return arr;
 }
 
-console.log('WebSocket server running on ws://localhost:8080');
+server.listen(process.env.PORT || 3000, () => {
+  console.log(`Server listening on port ${server.address().port}`);
+});

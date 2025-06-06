@@ -27,6 +27,15 @@ The client originally used WebSockets, but a simple peer-to-peer mode is now inc
 
 Drawing data is still sent as placeholder strings and should be extended to transmit real stroke information.
 
+## Timers
+
+Default time limits for each phase are defined in `client/GameConfig.swift`:
+
+- `drawingTime` – seconds allowed for drawing (120 by default)
+- `titleTime` – seconds allowed for entering fake titles (90 by default)
+
+`DrawingView` and `TitleInputView` display a countdown and automatically advance when the timer ends.
+
 ## Development Notes
 
 This is a small prototype meant to demonstrate the basic structure of a room-based drawing game. It is not production ready and lacks many features such as persistence, user authentication and proper game logic.
@@ -57,7 +66,8 @@ The iOS client now contains minimal SwiftUI views that outline the game flow:
 3. **DrawingView** – simple canvas where the drawer sketches the prompt.
 4. **TitleInputView** – other players enter fake titles after the drawing.
 5. **ChoiceView** – everyone chooses from the list of titles.
-6. **ResultView** – displays placeholder results before the next round.
+6. **ResultView** – shows scores and links to the replay or next round.
+7. **ReplayView** – placeholder screen for viewing past drawings.
 
 These screens are linked with `NavigationLink` so you can tap through the flow
 even though the networking and game logic are still very limited.

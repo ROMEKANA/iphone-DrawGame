@@ -5,6 +5,9 @@ struct ResultView: View {
         VStack(spacing: 20) {
             Text("Results")
             Text("Scores will appear here.")
+            NavigationLink("View Replay") {
+                ReplayView()
+            }
             NavigationLink("Back to Title") {
                 TitleView()
             }

@@ -7,6 +7,7 @@ struct DrawingView: View {
     @StateObject private var socket = GameSocket()
     @State private var currentPath = Path()
     @State private var paths: [Path] = []
+
     @State private var timeRemaining = Int(GameConfig.drawingTime)
     @State private var autoNext = false
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -16,6 +17,7 @@ struct DrawingView: View {
             Text("Time: \(timeRemaining)")
                 .font(.headline)
                 .padding(.top)
+
             Canvas { context, size in
                 for path in paths {
                     context.stroke(path, with: .color(.black), lineWidth: 3)
@@ -33,6 +35,7 @@ struct DrawingView: View {
                 }
             )
             .background(Color.white)
+
 
             NavigationLink("Finish Drawing") {
                 TitleInputView()
@@ -54,6 +57,7 @@ struct DrawingView: View {
             } else {
                 autoNext = true
             }
+
         }
         .navigationTitle(roomId)
     }

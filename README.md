@@ -17,11 +17,13 @@ npm install
 node server.js
 ```
 
+
 The server listens on `ws://localhost:8080` and relays JSON messages between all clients in the same room. You can skip running the server if you use the new peer-to-peer mode in the iOS client.
 
 ## iOS Client
 
 The SwiftUI code in `client/` shows a simple example of connecting to the server, creating or joining rooms, and drawing on a canvas. You can open the folder in Xcode and build it for iOS.
+
 
 The client originally used WebSockets, but a simple peer-to-peer mode is now included using Apple's `MultipeerConnectivity` framework. When a player creates a room they act as the host and advertise the session on the local network. Other players join the room without the Node.js server.
 
@@ -39,6 +41,7 @@ Default time limits for each phase are defined in `client/GameConfig.swift`:
 ## Development Notes
 
 This is a small prototype meant to demonstrate the basic structure of a room-based drawing game. It is not production ready and lacks many features such as persistence, user authentication and proper game logic.
+
 
 ## Game Logic
 
@@ -71,3 +74,4 @@ The iOS client now contains minimal SwiftUI views that outline the game flow:
 
 These screens are linked with `NavigationLink` so you can tap through the flow
 even though the networking and game logic are still very limited.
+

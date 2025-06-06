@@ -2,6 +2,7 @@ import Foundation
 import SwiftUI
 
 class GameSocket: ObservableObject {
+
     private let peer = MultipeerSession()
 
     func host(roomId: String, playerName: String) {

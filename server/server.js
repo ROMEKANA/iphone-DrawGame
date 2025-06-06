@@ -2,6 +2,7 @@ const WebSocket = require('ws');
 const wss = new WebSocket.Server({ port: 8080 });
 
 const rooms = {};
+
 const prompts = [
   'Flying cat',
   'Running dog',
@@ -9,10 +10,12 @@ const prompts = [
   'Dancing bear'
 ];
 
+
 function broadcast(roomId, data) {
   const room = rooms[roomId];
   if (!room) return;
   const message = JSON.stringify(data);
+
   room.players.forEach(p => {
     if (p.ws.readyState === WebSocket.OPEN) {
       p.ws.send(message);
@@ -108,6 +111,7 @@ wss.on('connection', ws => {
   });
 
   ws.on('close', () => {
+
     const id = ws.roomId;
     if (!id) return;
     const room = rooms[id];

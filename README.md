@@ -47,3 +47,17 @@ This logic is purposely lightweight and exists only on the server. The SwiftUI
 client remains a simple prototype and will need to be extended to send the new
 message types (`start`, `finish`, `title`, `answer`) and to present the UI for
 the different steps of the game.
+
+## Basic Scenes
+
+The iOS client now contains minimal SwiftUI views that outline the game flow:
+
+1. **TitleView** – shows the game title and a button to start.
+2. **MatchingView** – enter a player name and room ID to create or join a room.
+3. **DrawingView** – simple canvas where the drawer sketches the prompt.
+4. **TitleInputView** – other players enter fake titles after the drawing.
+5. **ChoiceView** – everyone chooses from the list of titles.
+6. **ResultView** – displays placeholder results before the next round.
+
+These screens are linked with `NavigationLink` so you can tap through the flow
+even though the networking and game logic are still very limited.

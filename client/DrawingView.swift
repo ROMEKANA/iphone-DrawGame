@@ -27,6 +27,10 @@ struct DrawingView: View {
                 }
             )
             .background(Color.white)
+
+            NavigationLink("Finish Drawing") {
+                TitleInputView()
+            }
         }
         .onAppear {
             if isHost {
